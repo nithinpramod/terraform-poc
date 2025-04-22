@@ -2,9 +2,9 @@ provider "aws" {
   region = "eu-west-1"  # Change as per your requirement
 }
 
-resource "aws_kms_key" "cmk" {
-  description             = "Customer Managed Key for encryption"
-  deletion_window_in_days = 10
+resource "aws_kms_key" "rds_cmk" {
+  description             = "Customer Managed Key for encryption(RDS)"
+  deletion_window_in_days = 30
 
   policy = <<EOF
 {
@@ -25,9 +25,9 @@ resource "aws_kms_key" "cmk" {
 EOF
 }
 
-resource "aws_kms_alias" "cmk_alias" {
-  name          = "alias/my-cmk-key"
-  target_key_id = aws_kms_key.cmk.key_id
+resource "aws_kms_alias" "cmk_alias_rds" {
+  name          = "alias/rds-cmk-key"
+  target_key_id = aws_kms_key.rds_cmk.key_id
 }
 
 data "aws_caller_identity" "current" {}
