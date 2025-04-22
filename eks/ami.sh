@@ -39,4 +39,26 @@ echo "✅ Source AMI available: $SOURCE_AMI"
 
 # Step 2: Copy AMI with KMS encryption
 ENCRYPTED_AMI_NAME="eks-node-encrypted-$(date +%Y%m%d%H%M%S)"
-echo "🔐 Copying AMI with"
+echo "🔐 Copying AMI with encryption using KMS key: $KMS_KEY_ALIAS"
+echo "Running aws ec2 copy-image..."
+
+ENCRYPTED_AMI=$(aws ec2 copy-image \
+  --source-image-id "$SOURCE_AMI" \
+  --source-region "$REGION" \
+  --region "$REGION" \
+  --name "$ENCRYPTED_AMI_NAME" \
+  --encrypted \
+  --kms-key-id "$KMS_KEY_ALIAS" \
+  --query 'ImageId' \
+  --output text 2>&1)
+
+if [[ $? -ne 0 ]]; then
+  echo "❌ Failed to copy AMI with encryption:"
+  echo "$ENCRYPTED_AMI"
+  exit 1
+fi
+
+echo "⏳ Waiting for encrypted AMI ($ENCRYPTED_AMI) to become available..."
+aws ec2 wait image-available --image-ids "$ENCRYPTED_AMI" --region "$REGION"
+
+echo "✅ Encrypted AMI created successfully: $ENCRYPTED_AMI"
