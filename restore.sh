@@ -2,7 +2,7 @@
 
 # Variables
 ENCRYPTED_SNAPSHOT_ID="snapshot-20250422-071126-encrypted"
-NEW_DB_INSTANCE_ID="temp-restored"
+NEW_DB_INSTANCE_ID="temp"
 DB_INSTANCE_CLASS="db.t3.micro"
 REGION="us-east-1"
 SUBNET_GROUP_NAME="default-subnet-group"
