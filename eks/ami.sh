@@ -3,7 +3,7 @@
 set -e
 
 REGION="us-east-1"
-KMS_KEY_ALIAS="alias/eks-ebs-encryption"
+KMS_KEY_ALIAS="alias/eks/eks-unencrypted-demo"
 
 echo "Fetching one EKS worker node instance ID..."
 INSTANCE_ID=$(aws ec2 describe-instances \
@@ -43,4 +43,4 @@ ENCRYPTED_AMI=$(aws ec2 copy-image \
 echo "Waiting for encrypted AMI to become available..."
 aws ec2 wait image-available --image-ids "$ENCRYPTED_AMI" --region "$REGION"
 
-echo "Encrypted AMI created: $ENCRYPTED_AMI"
+echo "✅ Encrypted AMI created: $ENCRYPTED_AMI"
