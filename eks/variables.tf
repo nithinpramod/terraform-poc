@@ -7,11 +7,11 @@ variable "cluster_name" {
 }
 
 variable "subnet_ids" {
-  default = ["subnet-071d24e7da7812932", "subnet-02848b6b3026b21a4"]
+  default = ["subnet-0557c5dc8bde8cc2a", "subnet-0599e0eb972152dbd"]
 }
 
 variable "vpc_id" {
-  default = "vpc-014ccc486a24d5676"
+  default = "vpc-025d364dfa957d9e5"
 }
 
 variable "node_instance_type" {
