@@ -39,4 +39,4 @@ echo "✅ Source AMI available: $SOURCE_AMI"
 
 # Step 2: Copy AMI with KMS encryption
 ENCRYPTED_AMI_NAME="eks-node-encrypted-$(date +%Y%m%d%H%M%S)"
-echo "🔐 Copying AMI with
+echo "🔐 Copying AMI with"
