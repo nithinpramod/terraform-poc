@@ -1,7 +1,7 @@
 
 
-resource "aws_kms_key" "rds_cmk" {
-  description             = "Customer Managed Key for encryption(RDS)"
+resource "aws_kms_key" "eks_cmk" {
+  description             = "Customer Managed Key for encryption(EKS)"
   deletion_window_in_days = 30
 
   policy = <<EOF
@@ -23,9 +23,9 @@ resource "aws_kms_key" "rds_cmk" {
 EOF
 }
 
-resource "aws_kms_alias" "cmk_alias_rds" {
-  name          = "alias/rds-cmk-key"
-  target_key_id = aws_kms_key.rds_cmk.key_id
+resource "aws_kms_alias" "cmk_alias_eks" {
+  name          = "alias/eks-cmk-key"
+  target_key_id = aws_kms_key.eks_cmk.key_id
 }
 
 data "aws_caller_identity" "current" {}
