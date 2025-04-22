@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "eu-west-1"  # Change as per your requirement
-}
+
 
 resource "aws_kms_key" "rds_cmk" {
   description             = "Customer Managed Key for encryption(RDS)"
