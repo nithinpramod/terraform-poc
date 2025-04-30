@@ -7,5 +7,5 @@ output "subnet_ids" {
 }
 
 output "node_role_arn" {
-  value = module.eks.eks_managed_node_groups["cmk_encrypted_nodes"].iam_role_arn
+  value = "arn:aws:iam::456130209114:role/cmk_encrypted_nodes-eks-node-group-20250430081203008100000006"
 }
