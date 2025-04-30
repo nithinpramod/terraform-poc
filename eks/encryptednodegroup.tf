@@ -1,6 +1,6 @@
 resource "aws_eks_node_group" "encrypted_node_group" {
   cluster_name    = var.cluster_name
-  node_group_name = "encrypted-nodegroup"
+  node_group_name = "encrypted-nodegroup-1"
   node_role_arn   = "arn:aws:iam::456130209114:role/cmk_encrypted_nodes-eks-node-group-20250430081203008100000006"
   subnet_ids      = var.subnet_ids
 
