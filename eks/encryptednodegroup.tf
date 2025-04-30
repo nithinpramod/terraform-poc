@@ -1,7 +1,7 @@
 resource "aws_eks_node_group" "encrypted_node_group" {
   cluster_name    = var.cluster_name
   node_group_name = "encrypted-nodegroup"
-  node_role_arn   = module.eks.eks_managed_node_groups["cmk_encrypted_nodes"].iam_role_arn
+  node_role_arn   = "arn:aws:iam::456130209114:role/cmk_encrypted_nodes-eks-node-group-20250430081203008100000006"
   subnet_ids      = var.subnet_ids
 
   scaling_config {
